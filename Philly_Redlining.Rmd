@@ -1,0 +1,206 @@
+---
+title: "Philly_Redlining"
+author: "Elizabeth Zazycki"
+date: "5/30/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Purpose
+This will be a walk-through of the spatial joins and areal calculations needed to do a spatial overlay of modern census boundaries and historic redlining data. However, this process can apply to more general aggregation practices.
+
+
+### Historic Redline Data to Modern Census Block Boundaries
+
+Redlining was the systematic practice of outlining, often racial or ethnic, neighborhoods or communities often by financial service industries such as banking and insurance for the denial of various services or the selective raising of prices. Historic redlining data can help characterize or contextualize modern census block data. However, redlining boundaries were are heterogeneous as the practice of redlining itself, and was practiced by various individuals and industries on both official and "unofficial" basis. Additionally, census boundaries are constantly in flux, growing and shrinking to accommodating moving and dynamic populations. Also, when comparing data historically, like modern data census boundaries and boundaries drawn approximately 80 years ago, appropriate aggregation becomes important. Therefore, it is important to learn how to do spatial joins and areal calculations that can identify what percent of a block is covered by a redlined area category. 
+
+### Data
+
+* My redlining data is from the University of Richmond's Mapping Inequality project that can be found here: <https://dsl.richmond.edu/panorama/redlining/#loc=5/39.1/-94.58&text=intro>. 
+
+The redlining boundaries and category are taken from the United State's federal government's Howe Owner's Loan Corporation between 1935 and 1940. This is by no means the only redlining maps created, as various industries participated in redlining from health care to supermarkets, nor is it definitive for the banking or insurance industries where different companies could have thier own maps. Redlining is also not only a historic practice, with insurance companies in Ohio, for example, allowing the continued use of demographic data at the ZIP code level to determine insurance rate. 
+
+* My census block data is downloaded from OpenDataPhilly portal which can be found here:
+<https://www.opendataphilly.org>
+
+
+## Overview of Process
+Pre-steps are to download the data from the links provided in the data section. Then, library the necessary packages
+```{r library, echo= TRUE, message = FALSE}
+library(sf)
+library(tidyverse)
+library(tigris)
+library(tmap)
+library(ggplot2)
+library(leaflet)
+```
+
+### Load in Redlining Data and Clean
+
+Read in the shapefile and then subset by desired state and city and select desired columms. 
+
+```{r load redlining, echo=TRUE}
+nation_redlining <- st_read("/Users/elizabethzazycki/redlining shapefile/shapefile/holc_ad_data.shp")
+philly_redlining <- subset(nation_redlining, state == "PA" & city == "Philadelphia") %>%
+  select(holc_grade, geometry)
+view(philly_redlining)
+```
+
+Visulize:
+```{r look at initial redlining, echo= TRUE}
+plot(philly_redlining)
+```
+
+### Load in Census Data and Clean
+
+Load in shapefile of Philadelphia's Census blocks.
+
+```{r load census, echo=TRUE}
+philly_blocks <- st_read("/Users/elizabethzazycki/Philly Project/Census_Block_Groups_2010-shp/Census_Block_Groups_2010.shp") %>%
+  select(NAMELSAD10) #name of census blocks
+view(philly_blocks)
+```
+
+Visualize:
+
+```{r look at initial census, echo=FALSE}
+plot(philly_blocks)
+```
+
+### Transform Into Study Coordinate Reference System
+
+Since we are going to be doing calculations it is important to first check that all our data is in the same CRS and that we have a CRS with appropriate units.
+
+```{r inital crs, echo=TRUE}
+st_crs(philly_blocks)
+st_crs(philly_redlining)
+```
+
+While both datasets are in the same CRS, the units are degree and for our calculations we need U.S. feet. 
+
+Therefore, we will transform the data into a appropriate CRS (for our purposes one calculated for Pennsylvania) whose units are U.S. feet:
+
+```{r transform crs, echo=TRUE}
+philly_blocks_trans <- st_transform(philly_blocks, 2272)
+st_crs(philly_blocks_trans)
+
+philly_redlining_trans <- st_transform(philly_redlining, 2272)
+st_crs(philly_redlining_trans)
+```
+
+Now that the data is loaded, cleaned, and in the right CRS we can begin spatial overlay and calculation process.
+
+### Spatial Join and Areal Calculation
+
+In one really compact coding chunck we can perform a spatial join and an areal calculation. In the next steps we will break down the process
+
+```{r everything: join and calc, echo=TRUE}
+overlap <- st_intersection(
+  philly_redlining_trans, 
+  philly_blocks_trans ) %>% # spatial joining
+  mutate(area = st_area(geometry)) %>% # calculate block area and add new column
+  as.data.frame() %>%
+  select(NAMELSAD10, area, holc_grade, geometry) %>% 
+  group_by(NAMELSAD10) %>%
+  mutate(coverage = as.numeric(area / sum(area)) # Calculate coverage
+  )
+view(overlap)
+head(overlap)
+```
+
+In the first part of the code chunk we create an object called overlap that is the inersection of our redlining data and census block data.
+```{r join, eval= FALSE}
+overlap <- st_intersection(
+  philly_redlining_trans, 
+  philly_blocks_trans) %>% # spatial joining
+```
+
+Then, in the next chunk we calculate the area of the intersection of redlining boundaries and the modern day census blocks and select the columns we are interested in.
+```{r calc 1, eval= FALSE}
+  mutate(area = st_area(geometry)) %>% # calculate block area and add new column
+  as.data.frame() %>%
+  select(NAMELSAD10, area, holc_grade, geometry) %>% 
+  group_by(NAMELSAD10) %>%
+```
+
+Finally, we calculate the coverage of each modern day census block by each redlining boundary and its grade.
+```{r calc 2, eval= FALSE}
+  mutate(coverage = as.numeric(area / sum(area)) # Calculate coverage
+  )
+view(overlap)
+```
+
+## Visualize Result
+
+### Visual For Census Blocks that Intersect with Redlining Boundaries
+```{r intersection viz, echo=FALSE}
+overlap <- st_sf(overlap)
+
+tmap_mode("plot")
+
+overlap_map <- tm_shape(overlap) + tm_fill(col = "pink") + tm_borders(col = "grey") +
+  tm_layout(main.title = "Census blocks That Overlap With\n Historic Redlining Districts",
+            main.title.position = "center",
+            frame = FALSE,
+            main.title.size = 1.2,
+            fontfamily = "serif")
+
+print(overlap_map)
+```
+
+### Visual For blocks that Overlap with the Holc Grade D and Original Redlining Boundaries
+
+```{r comparison D viz , echo=FALSE, message = FALSE}
+
+### visualization for holc boundary
+
+
+holcBound_map <- tm_shape(philly_redlining_trans) + tm_polygons("holc_grade", style = 'cat', pal = "OrRd", title = "Holc Grade") +
+  tm_layout(main.title = "Redlining Holc Boundaries", main.title.position = "center",
+            frame = FALSE,
+            main.title.size = 1.2,
+            fontfamily = "serif")
+
+
+## create visualization for blocks that overlap with D
+# select only overlaps with a holc_grade D
+gradeD <- overlap [overlap$holc_grade == 'D', ]
+view(gradeD) #check
+
+holcD_map <- tm_shape(gradeD) + tm_polygons("coverage", style = 'quantile', pal = "OrRd", title = "Grade D %", border.col = "grey") +
+  tm_layout(main.title = "Census blocks that Overlap \nwith Holc Grade D",
+            main.title.position = "center",
+            frame = FALSE,
+            main.title.size = 1.2,
+            fontfamily = "serif")
+
+## comparing visualization
+tmap_arrange(holcBound_map, holcD_map)
+
+```
+
+### Visual For blocks that Overlap with the Holc Grade A and Original Redlining Boundaries
+
+And, just for fun, let's look at blocks that overlap with Holc Grade A
+
+```{r comparison A viz , echo=FALSE, message = FALSE}
+gradeA <- overlap [overlap$holc_grade == 'A', ]
+view(gradeA) #check
+
+holcA_map <- tm_shape(gradeA) + tm_polygons("coverage", style = 'quantile', pal = "Greens", title = "Grade A %", border.col = "grey") +
+  tm_layout(main.title = "Census blocks that Overlap \nwith Holc Grade A",
+            main.title.position = "center",
+            frame = FALSE,
+            main.title.size = 1.2,
+            fontfamily = "serif")
+tmap_arrange(holcA_map, holcD_map)
+
+```
+
+
+## Done!
+
+From here, with your data all at the same scale, you can go forth and do more complex analysis!
