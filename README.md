@@ -17,6 +17,12 @@ The spatial temporal scale I used was U.S. Census blocks. This scale was chosen 
 
 ### Methods Used
 
+Creation of Index:
+
+Since CalEnviroScreen does not include information on how they weight their own index, I decided to weigh all indicators equally for each group. There are two main groups: socio-economic factors which I made 30% of the index, because they are more background variables when considering pollution's affects, where polluction as the actors should be weighed more heavily. Therefore, I put the pollution effects as 70% of the index.
+
+I weighted the enviromental and exposure factors all equally at 75% of the index
+
 ### Results
 
 ### Discussion
@@ -25,6 +31,8 @@ The spatial temporal scale I used was U.S. Census blocks. This scale was chosen 
 
 
 ### Further work
+
+Further work would expand upon and trouble-shoot my health indicator. There was something wrong with the inital daa provided by the Philadelphia government, the geometry taps were initally empty, which I trouble shooted by adding in my own geometry, but I was unable to merge the file with my other environmental factors, which is because I believe the data has larger problems. I tried to contact OpenDataPhilly but they have not responded yet.
 
 There are a couple of very interestings prospects for further work on creating a Philidelphia environmental justice indicator. One I was interested in, though I thought it was out scope of what my work was in this specific deadline of the project, was using neighborhood charatization data from OpenDataPhilly.  In OpenData Philly there is geospatial data on:
 * Philadelphia zones termed as “blighted”
