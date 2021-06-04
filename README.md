@@ -264,8 +264,12 @@ view(PhillyEnviroScreen)
 <img width="1189" alt="Philly_envEcoIndex" src="https://user-images.githubusercontent.com/79418915/120835607-28476d00-c52a-11eb-9f1a-e4cdd6bc49a5.png">
 
 
-### PhillyEnviroScreen index
+### PhillyEnviroScreen Index
 <img width="732" alt="Philly_Index" src="https://user-images.githubusercontent.com/79418915/120743999-ae7a9980-c4bf-11eb-9adc-c62f9df0d798.png">
+
+### PhillyEnviroScreen Index Compared to Redlining Grade D
+
+<img width="1145" alt="Screen Shot 2021-06-04 at 2 51 43 PM" src="https://user-images.githubusercontent.com/79418915/120855771-87b27680-c544-11eb-8205-8005196736c5.png">
 
 
 ### Discussion
