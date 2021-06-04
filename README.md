@@ -80,18 +80,18 @@ The goal of this project is to generate a cleaned dataset consisting of historic
 | Groundwater Threats | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_PWDIS_D2 (approximate)| Census Block Groups | From .gdb to .shp in QGIS |
 | Hazardous Waste Generators and Facilities | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator:  P_PNPL_D2, P_PRMP_D2, P_PTSDF_D2 (together, approximate) | Census Block Groups | From .gdb to .shp in QGIS |
 | Solid Waste Sites and Facilities | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator:  P_PNPL_D2, P_PRMP_D2, P_PTSDF_D2 (together, approximate) | Census Block Groups | From .gdb to .shp in QGIS |
-| Educational Attainment | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
-| Housing Burden | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
-| Linguistic Isolation | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
-| Poverty | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
-| Unemployment | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
-| Black, Indigenous, People of Color Population | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
-| Recieving Supplemental Federal Income | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
-| Gini Coefficient of Inequality | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
+| Educational Attainment | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
+| Housing Burden | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
+| Linguistic Isolation | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
+| Poverty | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
+| Unemployment | ACS (2015) | tidycensus in R  | Census Block Groups | Read into R directly |
+| Black, Indigenous, People of Color Population | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
+| Recieving Supplemental Federal Income | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
+| Gini Coefficient of Inequality | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
 | COVID hospitalizations (by ZIP) | OpenDataPhilly | https://www.opendataphilly.org/dataset/covid-hospitalizations | Philadelphia Zips | .shp |
 | COVID deaths (by ZIP) | OpenDataPhilly | https://www.opendataphilly.org/dataset/covid-deaths | Philadelphia Zips | .shp |
 | Cancer | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: | Census Block Groups | From .gdb to .shp in QGIS | 
-| Percent without any health insurance | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
+| Percent without any health insurance | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
 | Child lead blood levels | OpenDataPhilly | https://www.opendataphilly.org/dataset/philadelphia-child-blood-lead-levels | Census Tracts | .shp |
 
 ### Spatial Temporal Scale
