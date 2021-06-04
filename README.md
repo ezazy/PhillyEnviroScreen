@@ -244,6 +244,7 @@ write_sf(PhillyEnviroScreen, "Philly Project/final data/PhillyEnviroScreen_index
 view(PhillyEnviroScreen)
 ```
 
+Additionally, I combinded my redlining and PhillyEnviroScreen data, this code can be found in Philly_ScreenRedlining.R in the data folder. 
 
 
 ## Results
