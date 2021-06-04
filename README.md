@@ -13,12 +13,12 @@ CalEnviroScreen is a mapping tool used to aid California legislators in identify
 For my project, with currently publicly available datasets I want to create a metric similar to CalEnviroScreen and taking into account as many of their indicators as possible. My indicators are therefore primarily based on CalEnviroScreen's Indicators, which include:
 
 Exposure Indicators:
-* Air Quality Ozone
-* Air Quality PM2.5
+* Air Quality: Ozone
+* Air Quality: PM2.5
 * Children’s Lead Risk from Housing
 * Diesel Particulate Matter
-* Drinking Water Contaminants
-* Pesticide Use
+* Drinking Water Contaminants*
+* Pesticide Use*
 * Toxic Releases from Facilities
 * Traffic Density
 
@@ -29,10 +29,10 @@ Environmental Effect Indicators
 * Inpaired Water Bodies
 * Solid Waste Sites and Facilities
 
-Sensitive Population Indicators*
-* Asthma
-* Cardiovascular disease
-* Low birth weight infants
+Sensitive Population Indicators
+* Asthma*
+* Cardiovascular disease*
+* Low birth weight infants*
 
 Socioeconomic factor Indicators
 * Educational Attainment
@@ -40,19 +40,19 @@ Socioeconomic factor Indicators
 * Linguistic Isolation
 * Poverty
 * Unemployment
+* Black, Indigenous, People of Color Population
+* Recieving Supplemental Federal Income
+* Gini Coefficient of Inequality 
 
-*I could not include sensitive population indicators in my data construct because I could not find readily available reliable data for these indicators. Further work could include these indicators and other factors that would affect health outcomes. In place of this variable I have my "health" construct that includes other information on health outcomes.
+*There are a few CalEnviroScreen Indicators that I was not able to incorporate into my analysis: the sensitive population indicators (replaced with my health indicator), drinking water contaminants, and pesticide use. Drinking water contaminants are not well regulated by the Safe Drinking Water Act and the EPA, and tests are often unreliable with negative results often hidden for years (just for instance the recent wave of lead drinking water scandals). A more in depth environmental screen would find reliable drinking water metrics and pesticide use data, which I could not easily find reliable geospatial data on during the project's time constraints. I could not include sensitive population indicators in my data construct because I could not find readily available reliable data for these indicators. Further work could include these indicators and other factors that would affect health outcomes. In place of this variable I have my "health" construct that includes other information on health outcomes.
 
 My addtional health construct:
 Health
 * COVID hospitalizations (by ZIP)
 * COVID deaths (by ZIP)
-* Cancer (EJSCREEN)
-
-
-
-CalEnviroScreen’s indicators are split into two distinct categories: pollution burden and population characteristics. 
-
+* Cancer
+* Percent without any health insurance
+* Child lead blood levels
 
 
 
@@ -68,7 +68,32 @@ The goal of this project is to generate a cleaned dataset consisting of historic
 
 ### Data Sources
 
-
+|   Indicator         |   Source       | Source Access |     Scale   | File type |
+| ------- | ----------- | --------- | ---------------------| -----------|
+| Air Quality: Ozone | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) | Census Block Groups | From .gdb to .shp in QGIS |
+| Air Quality: PM2.5 | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) | Census Block Groups | From .gdb to .shp in QGIS |
+| Children’s Lead Risk from Housing | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) | Census Block Groups | From .gdb to .shp in QGIS |
+| Diesel Particulate Matter | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) | Census Block Groups | From .gdb to .shp in QGIS |
+| Toxic Releases from Facilities | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) | Census Block Groups | From .gdb to .shp in QGIS |
+| Traffic Density | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) | Census Block Groups | From .gdb to .shp in QGIS |
+| Cleanup Sites | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) | Census Block Groups | From .gdb to .shp in QGIS |
+| Groundwater Threats | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) | Census Block Groups | From .gdb to .shp in QGIS |
+| Hazardous Waste Generators and Facilities | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) | Census Block Groups | From .gdb to .shp in QGIS |
+| Inpaired Water Bodies | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) | Census Block Groups | From .gdb to .shp in QGIS |
+| Solid Waste Sites and Facilities | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) | Census Block Groups | From .gdb to .shp in QGIS |
+| Educational Attainment | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
+| Housing Burden | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
+| Linguistic Isolation | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
+| Poverty | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
+| Unemployment | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
+| Black, Indigenous, People of Color Population | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
+| Recieving Supplemental Federal Income | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
+| Gini Coefficient of Inequality | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
+| COVID hospitalizations (by ZIP) | OpenDataPhilly | https://www.opendataphilly.org/dataset/covid-hospitalizations | Philadelphia Zips | .shp |
+| COVID deaths (by ZIP) | OpenDataPhilly | https://www.opendataphilly.org/dataset/covid-deaths | Philadelphia Zips | .shp |
+| Cancer | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) | Census Block Groups | From .gdb to .shp in QGIS | 
+| Percent without any health insurance | ACS | tidycensus in R  | Census Block Groups | Read into R directly |
+| Child lead blood levels | OpenDataPhilly | https://www.opendataphilly.org/dataset/philadelphia-child-blood-lead-levels | Census Tracts | .shp |
 
 ### Spatial Temporal Scale
 The spatial temporal scale I used was U.S. Census blocks. This scale was chosen because it was the most granular, reliable data I could find. Using a smaller scale for analysis allows for a more nuanced view of environmental factors in a relatively smaller city.
