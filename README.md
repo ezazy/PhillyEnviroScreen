@@ -100,6 +100,8 @@ The spatial temporal scale I used was U.S. Census blocks. This scale was chosen 
 
 ## Methods Used
 
+For the methods for the Philadelphia historical redlining and modern census blocks spatial overlay and areal calculation check out the RMarkdown file in main or here: http://rpubs.com/ezazycki/777608
+
 For data taken from the ACS's 5-year estimate I loaded the data into R ushing tidy census, selected my desired columns, and then mutated them to create my indicators desired variables, and transformed that variable into percent. Since I did this for many indicators I will only include one example bellow (all shows in Philly_Indicators.R in this repository's data folder):
 
 ```
@@ -255,13 +257,14 @@ view(PhillyEnviroScreen)
 
 ## Results
 
+### Philadelphia Redlining and Census Blocks Spatial Overlay
 <img width="1243" alt="Philly_Redlining" src="https://user-images.githubusercontent.com/79418915/120743977-a28ed780-c4bf-11eb-8a34-09744f44c481.png">
 
-
+### Philadelphia Environmental and Socio-Econmic Index Compared
 <img width="1189" alt="Philly_envEcoIndex" src="https://user-images.githubusercontent.com/79418915/120835607-28476d00-c52a-11eb-9f1a-e4cdd6bc49a5.png">
 
 
-
+### PhillyEnviroScreen index
 <img width="732" alt="Philly_Index" src="https://user-images.githubusercontent.com/79418915/120743999-ae7a9980-c4bf-11eb-9adc-c62f9df0d798.png">
 
 
