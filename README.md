@@ -274,10 +274,17 @@ view(PhillyEnviroScreen)
 
 ### Discussion
 
-### Conclusion and Limitations
 
 
-### Further work
+### Conclusion, Limitations, and Further work
+
+
+A big limitation to my work was working within the constrains of what my RStudio app could handle. This meant that I could not combine all my data into one final shapefile, because R could not load that Shapefile and would stop responding. This limited an interesting discussion comparing my redlining data to my PhillyEnviroScreen score that I hoped to have. This also, was a major reason I did not pursue my health indicator farther (aside from time constraints), because my R could barely load my PhillyEnviroScreen data without those additional indicators. 
+
+Another limitation, is due to sources such as the EJSCREEN. The EJSCREEN has inherent problems and complecations when used to theorize on the micro-level (some detailed here: https://www.epa.gov/ejscreen/limitations-and-caveats-using-ejscreen) such as national estimates for enviromental indicators being imprecise at smaller scales. Coinciding my use of the EJSCREEN dataset, I decided to use the percentile for the EJ Index for each desired variable. Therefore, my data also inherits many of the limits of the EJSCREEN data, beyond just using national-level metrics on a smaller scale. I decided to use the percentile for the EJ Index, because it gives the data more national context, for instance what is medium Ozone level like in the United States and how does Philadelphia compare to that. This also helps pick apart national issues from more localized ones, but also made this project more suseptible to EJSCREEN's data downfalls, like if their metrics were off. 
+
+Additionally, I was limited by data availability, such as OpenDataPhilly having very limited data available, such as only data on where water testing locations are but no data on testing results. Another example is OpenDataPhilly having a shapefile  of air monitoring stations, but the only data available on bad air quality index days being in a total amount per year, without information on where those tests were carried out.
+
 
 Further work would expand upon and trouble-shoot my health indicator. There was something wrong with the inital daa provided by the Philadelphia government, the geometry taps were initally empty, which I trouble shooted by adding in my own geometry, but I was unable to merge the file with my other environmental factors, which is because I believe the data has larger problems. I tried to contact OpenDataPhilly but they have not responded yet.
 
