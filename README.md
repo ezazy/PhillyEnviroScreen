@@ -70,16 +70,16 @@ The goal of this project is to generate a cleaned dataset consisting of historic
 
 |   Indicator         |   Source       | Source Access |     Scale   | File type |
 | ------- | ----------- | --------- | ---------------------| -----------|
-| Air Quality: Ozone | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_OZONE_D2 | Census Block Groups | From .gdb to .shp in QGIS |
-| Air Quality: PM2.5 | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_PM25_D2 | Census Block Groups | From .gdb to .shp in QGIS |
-| Children’s Lead Risk from Housing | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_LDPNT_D2 | Census Block Groups | From .gdb to .shp in QGIS |
-| Diesel Particulate Matter | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_DSLPM_D2 | Census Block Groups | From .gdb to .shp in QGIS |
-| Toxic Releases from Facilities | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_RESP_D2 (approximate) | Census Block Groups | From .gdb to .shp in QGIS |
-| Traffic Density | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_PTRAF_D2 | Census Block Groups | From .gdb to .shp in QGIS |
-| Cleanup Sites | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_PNPL_D2, P_PRMP_D2, P_PTSDF_D2 (together, approximate) | Census Block Groups | From .gdb to .shp in QGIS |
-| Groundwater Threats | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_PWDIS_D2 (approximate)| Census Block Groups | From .gdb to .shp in QGIS |
-| Hazardous Waste Generators and Facilities | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator:  P_PNPL_D2, P_PRMP_D2, P_PTSDF_D2 (together, approximate) | Census Block Groups | From .gdb to .shp in QGIS |
-| Solid Waste Sites and Facilities | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator:  P_PNPL_D2, P_PRMP_D2, P_PTSDF_D2 (together, approximate) | Census Block Groups | From .gdb to .shp in QGIS |
+| Air Quality: Ozone | EJSCREEN (EJ Index) | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_OZONE_D2 | Census Block Groups | From .gdb to .shp in QGIS |
+| Air Quality: PM2.5 | EJSCREEN (EJ Index) | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_PM25_D2 | Census Block Groups | From .gdb to .shp in QGIS |
+| Children’s Lead Risk from Housing | EJSCREEN (EJ Index) | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_LDPNT_D2 | Census Block Groups | From .gdb to .shp in QGIS |
+| Diesel Particulate Matter | EJSCREEN (EJ Index) | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_DSLPM_D2 | Census Block Groups | From .gdb to .shp in QGIS |
+| Toxic Releases from Facilities | EJSCREEN (EJ Index) | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_RESP_D2 (approximate) | Census Block Groups | From .gdb to .shp in QGIS |
+| Traffic Density | EJSCREEN (EJ Index) | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_PTRAF_D2 | Census Block Groups | From .gdb to .shp in QGIS |
+| Cleanup Sites | EJSCREEN (EJ Index) | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_PNPL_D2, P_PRMP_D2, P_PTSDF_D2 (together, approximate) | Census Block Groups | From .gdb to .shp in QGIS |
+| Groundwater Threats | EJSCREEN (EJ Index) | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_PWDIS_D2 (approximate)| Census Block Groups | From .gdb to .shp in QGIS |
+| Hazardous Waste Generators and Facilities | EJSCREEN (EJ Index) | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator:  P_PNPL_D2, P_PRMP_D2, P_PTSDF_D2 (together, approximate) | Census Block Groups | From .gdb to .shp in QGIS |
+| Solid Waste Sites and Facilities | EJSCREEN (EJ Index) | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator:  P_PNPL_D2, P_PRMP_D2, P_PTSDF_D2 (together, approximate) | Census Block Groups | From .gdb to .shp in QGIS |
 | Educational Attainment | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
 | Housing Burden | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
 | Linguistic Isolation | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
@@ -90,7 +90,7 @@ The goal of this project is to generate a cleaned dataset consisting of historic
 | Gini Coefficient of Inequality | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
 | COVID hospitalizations (by ZIP) | OpenDataPhilly | https://www.opendataphilly.org/dataset/covid-hospitalizations | Philadelphia Zips | .shp |
 | COVID deaths (by ZIP) | OpenDataPhilly | https://www.opendataphilly.org/dataset/covid-deaths | Philadelphia Zips | .shp |
-| Cancer | EJSCREEN | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: | Census Block Groups | From .gdb to .shp in QGIS | 
+| Cancer | EJSCREEN (EJ Index) | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: | Census Block Groups | From .gdb to .shp in QGIS | 
 | Percent without any health insurance | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
 | Child lead blood levels | OpenDataPhilly | https://www.opendataphilly.org/dataset/philadelphia-child-blood-lead-levels | Census Tracts | .shp |
 
