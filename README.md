@@ -25,6 +25,11 @@ I weighted the enviromental and exposure factors all equally at 75% of the index
 
 ### Results
 
+<img width="1243" alt="Philly_Redlining" src="https://user-images.githubusercontent.com/79418915/120743977-a28ed780-c4bf-11eb-8a34-09744f44c481.png">
+
+<img width="732" alt="Philly_Index" src="https://user-images.githubusercontent.com/79418915/120743999-ae7a9980-c4bf-11eb-9adc-c62f9df0d798.png">
+
+
 ### Discussion
 
 ### Conclusion and Limitations
