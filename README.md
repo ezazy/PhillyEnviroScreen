@@ -17,8 +17,8 @@ Exposure Indicators:
 * Air Quality: PM2.5
 * Children’s Lead Risk from Housing
 * Diesel Particulate Matter
-* Drinking Water Contaminants*
-* Pesticide Use*
+* Drinking Water Contaminants******
+* Pesticide Use******
 * Toxic Releases from Facilities
 * Traffic Density
 
@@ -26,13 +26,13 @@ Environmental Effect Indicators
 * Cleanup Sites
 * Groundwater Threats
 * Hazardous Waste Generators and Facilities
-* Inpaired Water Bodies*
+* Inpaired Water Bodies******
 * Solid Waste Sites and Facilities
 
 Sensitive Population Indicators
-* Asthma*
-* Cardiovascular disease*
-* Low birth weight infants*
+* Asthma******
+* Cardiovascular disease******
+* Low birth weight infants******
 
 Socioeconomic factor Indicators
 * Educational Attainment
@@ -44,7 +44,7 @@ Socioeconomic factor Indicators
 * Recieving Supplemental Federal Income
 * Gini Coefficient of Inequality 
 
-*There are a few CalEnviroScreen Indicators that I was not able to incorporate into my analysis: the sensitive population indicators (replaced with my health indicator), drinking water contaminants, impaired water bodies, and pesticide use. Drinking water contaminants are not well regulated by the Safe Drinking Water Act and the EPA, and tests are often unreliable with negative results often hidden for years (just for instance the recent wave of lead drinking water scandals). A more in depth environmental screen would find reliable drinking water metrics and pesticide use data, which I could not easily find reliable geospatial data on during the project's time constraints. I could not include sensitive population indicators in my data construct because I could not find readily available reliable data for these indicators. Further work could include these indicators and other factors that would affect health outcomes. In place of this variable I have my "health" construct that includes other information on health outcomes.
+****** There are a few CalEnviroScreen Indicators that I was not able to incorporate into my analysis: the sensitive population indicators (replaced with my health indicator), drinking water contaminants, impaired water bodies, and pesticide use. Drinking water contaminants are not well regulated by the Safe Drinking Water Act and the EPA, and tests are often unreliable with negative results often hidden for years (just for instance the recent wave of lead drinking water scandals). A more in depth environmental screen would find reliable drinking water metrics and pesticide use data, which I could not easily find reliable geospatial data on during the project's time constraints. I could not include sensitive population indicators in my data construct because I could not find readily available reliable data for these indicators. Further work could include these indicators and other factors that would affect health outcomes. In place of this variable I have my "health" construct that includes other information on health outcomes.
 
 My addtional health construct:
 Health
@@ -286,4 +286,6 @@ There are a couple of very interestings prospects for further work on creating a
 
 Use of this data would be especially interesting to when compared to the historic redlining data, which was one of my original auxiliary goals.
 
-
+### Sources References:
+* https://oehha.ca.gov/calenviroscreen/indicators
+* https://l.facebook.com/l.php?u=https%3A%2F%2Fsixtysixwards.com%2Fhome%2Fcrosswalk-tutorial%2F%3Ffbclid%3DIwAR3VXgvDP5cVXAWkjARpIX4nKgcRcLB4QIsNNm7IYJ3k7u0qMh9WPv9Tpoo&h=AT33unP16K50bUeypu7Nx81jD-SWTOI7KhThWDpPwqf1stqojARWaUPRuZM18CRjglj4og4xsbmziy9qn3E65jy1hqmBaZrpOf0KiQ1ctxBFEuZych8G-bYfLrQHO9YTtvRj8tmVtlA
