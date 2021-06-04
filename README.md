@@ -262,6 +262,18 @@ view(PhillyEnviroScreen)
 
 <img width="1145" alt="Screen Shot 2021-06-04 at 2 51 43 PM" src="https://user-images.githubusercontent.com/79418915/120855771-87b27680-c544-11eb-8205-8005196736c5.png">
 
+### Carto Dashboard
+
+The Carto dashboard can be found here: https://ezazy.carto.com/builder/619f7ef9-3a52-4861-a33e-4e4cb04bd25e/embed
+
+<img width="750" alt="Carto Holc grade map" src="https://user-images.githubusercontent.com/79418915/120870076-95c0c100-c55d-11eb-8f19-40a0a6d7b619.png">
+
+<img width="819" alt="Carto holc grade map zoomed" src="https://user-images.githubusercontent.com/79418915/120870080-978a8480-c55d-11eb-9513-7da0fe92c9b3.png">
+
+<img width="765" alt="Carto Redlining map all" src="https://user-images.githubusercontent.com/79418915/120870081-99ecde80-c55d-11eb-9c4a-8b00e38a5618.png">
+
+<img width="799" alt="Carto redlining map zoomed" src="https://user-images.githubusercontent.com/79418915/120870098-a1ac8300-c55d-11eb-8978-bbff89c7222c.png">
+
 
 ### Discussion
 
