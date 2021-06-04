@@ -265,6 +265,7 @@ view(PhillyEnviroScreen)
 
 ### Discussion
 
+One thing I found particularly interesting, was to see how, even when pulled apart, how similar the socio-economic indicators were to the environment/exposure factors. 
 
 
 ### Conclusion, Limitations, and Further work
