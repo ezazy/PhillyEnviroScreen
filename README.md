@@ -80,25 +80,44 @@ The goal of this project is to generate a cleaned dataset consisting of historic
 | Groundwater Threats | EJSCREEN (EJ Index) | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: P_PWDIS_D2 (approximate)| Census Block Groups | From .gdb to .shp in QGIS |
 | Hazardous Waste Generators and Facilities | EJSCREEN (EJ Index) | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator:  P_PNPL_D2, P_PRMP_D2, P_PTSDF_D2 (together, approximate) | Census Block Groups | From .gdb to .shp in QGIS |
 | Solid Waste Sites and Facilities | EJSCREEN (EJ Index) | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator:  P_PNPL_D2, P_PRMP_D2, P_PTSDF_D2 (together, approximate) | Census Block Groups | From .gdb to .shp in QGIS |
-| Educational Attainment | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
+| Educational Attainment | ACS 5-year (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
 | Housing Burden | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
-| Linguistic Isolation | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
-| Poverty | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
-| Unemployment | ACS (2015) | tidycensus in R  | Census Block Groups | Read into R directly |
-| Black, Indigenous, People of Color Population | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
-| Recieving Supplemental Federal Income | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
-| Gini Coefficient of Inequality | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
+| Linguistic Isolation | ACS 5-year (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
+| Poverty | ACS 5-year (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
+| Unemployment | ACS 5-year (2015) | tidycensus in R  | Census Block Groups | Read into R directly |
+| Black, Indigenous, People of Color Population | ACS 5-year (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
+| Recieving Supplemental Federal Income | ACS 5-year (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
+| Gini Coefficient of Inequality | ACS 5-year (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
 | COVID hospitalizations (by ZIP) | OpenDataPhilly | https://www.opendataphilly.org/dataset/covid-hospitalizations | Philadelphia Zips | .shp |
 | COVID deaths (by ZIP) | OpenDataPhilly | https://www.opendataphilly.org/dataset/covid-deaths | Philadelphia Zips | .shp |
 | Cancer | EJSCREEN (EJ Index) | https://gaftp.epa.gov/EJSCREEN/ (2020 data) Indicator: | Census Block Groups | From .gdb to .shp in QGIS | 
-| Percent without any health insurance | ACS (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
+| Percent without any health insurance | ACS 5-year (2019) | tidycensus in R  | Census Block Groups | Read into R directly |
 | Child lead blood levels | OpenDataPhilly | https://www.opendataphilly.org/dataset/philadelphia-child-blood-lead-levels | Census Tracts | .shp |
 
 ### Spatial Temporal Scale
 The spatial temporal scale I used was U.S. Census blocks. This scale was chosen because it was the most granular, reliable data I could find. Using a smaller scale for analysis allows for a more nuanced view of environmental factors in a relatively smaller city.
 
 
-### Methods Used
+## Methods Used
+
+For data taken from the ACS's 5-year estimate I loaded the data into R ushing tidy census, selected my desired columns, and then mutated them to create my indicators desired variables, and transformed that variable into percent. Since I did this for many indicators I will only include one example bellow (all shows in Philly_Indicators in this repository's data folder):
+
+```
+PA_tractRace <- get_acs(geography = 'tract', variables = c(totPop19 = "B02001_001",
+                                                               afrAm = "B02001_003",
+                                                               nativeAm = "B02001_004",
+                                                               nativeH = "B02001_006",
+                                                               asian = "B02001_005",
+                                                               latine_his = "B03002_012"),
+                      year = 2019, state = 'PA', geometry = FALSE) %>%
+  select(GEOID, NAME, variable, estimate) %>% 
+  spread(variable, estimate) %>% 
+  mutate(poc19 = afrAm + nativeAm + + nativeH + asian + latine_his,
+         poc19_per = (afrAm + nativeAm + + nativeH + asian + latine_his) / totPop19) %>%
+  select(GEOID, totPop19, poc19, poc19_per)
+view(PA_tractRace)
+```
+
 
 Creation of Index:
 
